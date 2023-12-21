@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Fuerza : MonoBehaviour
+{
+    public float fuerza = 5f;
+    private Rigidbody rb;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+       
+    }
+    void OnCollisionEnter (Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Jugador"))
+        {
+            rb.AddForce(Vector3.forward * fuerza, ForceMode.Force);
+        }
+    }
+
+
+}
