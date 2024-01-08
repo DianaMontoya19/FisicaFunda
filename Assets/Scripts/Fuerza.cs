@@ -9,14 +9,26 @@ public class Fuerza : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-       
+        rb.useGravity = true;
+
     }
-    void OnCollisionEnter (Collision collision)
+
+
+    void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Jugador"))
+        while (rb.useGravity)
         {
-            rb.AddForce(Vector3.forward * fuerza, ForceMode.Force);
+            if (collision.gameObject.CompareTag("Jugador"))
+            {
+               
+                rb.AddForce(Vector3.forward * fuerza, ForceMode.Force);
+
+            }
+            rb.useGravity = false;
         }
+
+
+
     }
 
 
